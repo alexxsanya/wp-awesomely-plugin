@@ -11,6 +11,7 @@
    
    /*
     The pllugin stores the number of times each post has been viewed.
+    Styling is based on bootstrap 4.0
    */
 
    /**
@@ -114,11 +115,11 @@
     
         $awepop_list = new WP_Query($args);
     
-        if($awepop_list->have_posts()) { echo "<ul>"; }
+        if($awepop_list->have_posts()) { echo "<ul class='list-group'>"; }
     
         while ( $awepop_list->have_posts() ) : $awepop_list->the_post();
-        echo '<li><a href="'.get_permalink($post->ID).'">'.the_title(’, ’, false).'</a>
-                '. awepop_get_view_count() .'</li>';
+        echo '<li class="list-group-item"><a href="'.get_permalink($post->ID).'">'.the_title(’, ’, false).'</a>
+        <span class="badge badge-primary">'. awepop_get_view_count() .'</span></li>';
         endwhile;
     
         if($awepop_list->have_posts()) { echo "</ul>";}
